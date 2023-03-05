@@ -8,13 +8,9 @@ class AppWiget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<AppController>(context);
-    controller.openBox();
     return MaterialApp(
       title: "Imc",
-      home: HomePage(
-        controller: controller,
-      ),
+      home: HomePage(),
     );
   }
 }

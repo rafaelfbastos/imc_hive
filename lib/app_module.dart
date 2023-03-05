@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imc/app_wiget.dart';
+import 'package:imc/repositories/user_repository.dart';
 import 'package:imc/services/app_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -10,8 +11,9 @@ class AppModule extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (__) => AppController(),
+        Provider<UserRepository>(create: (__) => UserRepository()),
+        ChangeNotifierProvider<AppController>(
+          create: (context) => AppController(repository: context.read()),
           lazy: false,
         )
       ],
