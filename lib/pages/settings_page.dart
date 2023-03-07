@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:imc/controller/app_controller.dart';
 import 'package:imc/models/user_model.dart';
 import 'package:imc/widgets/new_user.dart';
@@ -20,16 +21,25 @@ class SettingsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Usuários"),
+        title: Text(
+          "Usuários",
+          style: GoogleFonts.montserratAlternates(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Usuário Selecionado:"),
+            Text(
+              "Usuário Selecionado:",
+              style: GoogleFonts.montserratAlternates(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
             const SizedBox(
-              height: 5,
+              height: 20,
             ),
             UserTitle(
               user: context.watch<AppController>().lastUser ?? UserModel.def(),
@@ -37,9 +47,15 @@ class SettingsPage extends StatelessWidget {
               index: 0,
             ),
             const SizedBox(
-              height: 5,
+              height: 20,
             ),
-            const Text("Usuários Cadastrados"),
+            Text(
+              "Usuários Cadastrados",
+              style: GoogleFonts.montserratAlternates(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
             const SizedBox(
               height: 5,
             ),

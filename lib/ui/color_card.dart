@@ -8,11 +8,11 @@ class ColorCard {
       return const Color(0XFFAECF36);
     } else if (imc > 18.5 && imc < 25) {
       return const Color(0XFFAECF36);
-    } else if (imc > 25 && imc < 30) {
+    } else if (imc >= 25 && imc < 30) {
       return const Color(0XFFF89A1E);
-    } else if (imc > 30 && imc < 35) {
+    } else if (imc >= 30 && imc < 35) {
       return const Color(0XFFF36D23);
-    } else if (imc > 35 && imc < 40) {
+    } else if (imc >= 35 && imc < 40) {
       return const Color(0XFFC5161D);
     } else {
       return const Color(0XFF504F50);

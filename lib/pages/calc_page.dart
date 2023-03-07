@@ -1,5 +1,6 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:imc/controller/app_controller.dart';
 import 'package:imc/widgets/custom_radial_gauge.dart';
 import 'package:intl/intl.dart';
@@ -21,7 +22,11 @@ class CalcPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xfff9f9fe),
       appBar: AppBar(
-        title: Text("Calcular IMC"),
+        title: Text(
+          "Calcular IMC",
+          style: GoogleFonts.montserratAlternates(
+              fontSize: 20, fontWeight: FontWeight.bold),
+        ),
       ),
       body: SingleChildScrollView(
           child: Padding(
@@ -33,6 +38,14 @@ class CalcPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              Text(
+                "Bem vindo ${context.watch<AppController>().lastUser?.name}",
+                style: GoogleFonts.montserratAlternates(
+                    fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               CustomRadialGauge(
                 imc: context.select<AppController, double>(
                     (controller) => controller.imc),
@@ -40,8 +53,16 @@ class CalcPage extends StatelessWidget {
               const SizedBox(height: 10),
               Visibility(
                 visible: context.watch<AppController>().imc != 0,
-                child: Text(
-                  context.watch<AppController>().imc.toStringAsFixed(2),
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 60),
+                    child: Text(
+                      "IMC: ${context.watch<AppController>().imc.toStringAsFixed(2)}",
+                      style: GoogleFonts.montserratAlternates(
+                          fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 10),
@@ -58,7 +79,11 @@ class CalcPage extends StatelessWidget {
                         symbol: "",
                         turnOffGrouping: true)
                   ],
-                  decoration: InputDecoration(label: Text("Peso:")),
+                  decoration: InputDecoration(
+                      label: Text(
+                    "Peso:",
+                    style: GoogleFonts.montserratAlternates(fontSize: 18),
+                  )),
                 ),
               ),
               ElevatedButton(
@@ -71,7 +96,11 @@ class CalcPage extends StatelessWidget {
                       context.read<AppController>().imcCalc(weight);
                     }
                   },
-                  child: Text("Calcular"))
+                  child: Text(
+                    "Calcular",
+                    style: GoogleFonts.montserratAlternates(
+                        fontWeight: FontWeight.bold, fontSize: 18),
+                  ))
             ],
           ),
         ),
