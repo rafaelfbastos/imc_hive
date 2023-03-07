@@ -3,6 +3,8 @@ import 'package:imc/models/user_model.dart';
 
 class UserRepository {
   Box? _box;
+  Box? _boxLast;
+
   static UserRepository? _instance;
 
   UserRepository._();
@@ -14,6 +16,7 @@ class UserRepository {
 
   Future<void> openBox() async {
     _box = await Hive.openBox<UserModel>("user");
+    _boxLast = await Hive.openBox("last");
   }
 
   Future<Box> get box async {
@@ -22,5 +25,13 @@ class UserRepository {
       return _box!;
     }
     return _box!;
+  }
+
+  Future<Box> get boxLast async {
+    if (_boxLast == null) {
+      await openBox();
+      return _boxLast!;
+    }
+    return _boxLast!;
   }
 }

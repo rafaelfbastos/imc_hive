@@ -11,7 +11,7 @@ class UserModel extends HiveObject {
   @HiveField(1)
   double altura;
   @HiveField(2)
-  List<double> imcs;
+  Map<String, double> imcs;
 
   UserModel({
     required this.name,
@@ -20,6 +20,16 @@ class UserModel extends HiveObject {
   });
 
   factory UserModel.def() {
-    return UserModel(name: "Usuário", altura: 0, imcs: []);
+    return UserModel(name: "Usuário", altura: 0, imcs: {});
   }
+
+  @override
+  bool operator ==(covariant UserModel other) {
+    if (identical(this, other)) return true;
+
+    return other.name == name;
+  }
+
+  @override
+  int get hashCode => name.hashCode;
 }

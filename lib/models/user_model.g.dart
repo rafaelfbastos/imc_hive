@@ -19,7 +19,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
     return UserModel(
       name: fields[0] as String,
       altura: fields[1] as double,
-      imcs: (fields[2] as List).cast<double>(),
+      imcs: (fields[2] as Map).cast<String, double>(),
     );
   }
 
